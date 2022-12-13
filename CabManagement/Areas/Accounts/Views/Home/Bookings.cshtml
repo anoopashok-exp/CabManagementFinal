@@ -1,0 +1,46 @@
+﻿@model BookingViewModel
+@{
+    ViewData["Title"] = "Bookings";
+}
+
+
+
+<div class="text-center">
+    <p class="display-1" style="font-size:50px; font-family:'Times New Roman', Times, serif">INFY CAB🚗</p>
+</div>
+<div class="text-lg-start">
+    <marquee><p class="display-4" style="font-size:20px;">BOOK YOUR CAB</p></marquee>
+</div>
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-6 offset-sm-3">
+            <form method="post">
+                <div>
+                    <label asp-for="PickUp">PickUp Location</label>
+                    <select asp-for="PickUp" asp-items="@Html.GetEnumSelectList<From>()" class="form-control">
+                        <option>Select </option>
+                    </select>
+                    <span asp-validation-for="PickUp" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Destination"></label>
+                    <select asp-for="Destination" asp-items="@Html.GetEnumSelectList<To>()" class="form-control">
+                        <option>Select </option>
+                    </select>
+                    <span asp-validation-for="Destination" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Time"></label>
+                    <input asp-for="Time" class="form-control" />
+                    <span asp-validation-for="Time" class="text-danger"></span>
+                </div>
+               
+                <div class="d-grid mt-4">
+                    <button class="btn btn-primary">Book</button>
+                </div>
+             </form>
+          </div>
+          </div>
+          </div>
+

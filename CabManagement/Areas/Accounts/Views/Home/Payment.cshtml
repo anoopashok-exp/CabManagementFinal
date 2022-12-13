@@ -1,0 +1,36 @@
+﻿@model RegisterViewModel
+
+@{
+    ViewData["Title"] = "Payment";
+}
+@inject UserManager<ApplicationUser> _userManager
+@inject SignInManager<ApplicationUser> _signinManager
+@{
+    ApplicationUser appUser = null;
+    ViewData["Title"] = "Home Page";
+    if (_signinManager.IsSignedIn(User))
+        appUser = await _userManager.FindByNameAsync(User.Identity.Name);
+}
+
+<div class="text-center">
+    <p class="display-1" style="font-size:50px; font-family:'Times New Roman', Times, serif">Infy Cab🚗</p>
+</div>
+
+<h1>Booking Confirmation</h1>
+<div class="text-lg-start">
+    <p class="display-4" style="font-size:30px;">Dear @appUser.FirstName,</p>
+</div>
+<div>
+    <p class="display-4" style="font-size:20px;">PAYMENT METHOD</p>
+    <div>
+        <p><a href="https://localhost:7166/Driver/DriverViewModels/Details">CASH ON PAYMENT</a></p>
+    </div>
+    <p class="display-4" style="font-size:20px;">Confirmation mail including the driver details will be mailed to @appUser.Email.</p>
+</div>
+
+
+
+
+
+
+

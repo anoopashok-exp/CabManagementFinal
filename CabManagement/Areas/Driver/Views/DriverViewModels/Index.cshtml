@@ -1,0 +1,63 @@
+﻿@model IEnumerable<CabManagement.Models.Booking>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cabs Book List</h1>
+
+<div class="d-flex">
+    <a asp-action="Create" class="btn btn-success ms-auto my-2">+ Add Rides</a>
+</div>
+
+<div class="container-fluid" style="color:black">
+    @if(Model.Any()){
+        <div class="row gap-5">
+            @foreach (var item in Model)
+            {
+                <div class="card col-sm-3 shadow">
+                   
+                    <div class="card-body">
+                        <h2>@item.PickUp</h2>
+                        <h2>@item.Destination</h2>
+                        <h2>@item.Time</h2>
+                    </div>
+                    <div class="card-footer d-flex">
+                        <div class="btn-group ms-auto">
+                            <a asp-action="Accept" asp-route-id="@item.PickUp" class="btn btn-primary">Accept</a>
+                            <a asp-action="Decline" asp-route-id="@item.PickUp" class="btn btn-danger" onclick="return confirm('Do you want to decline this ride?')">Decline</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else{
+        <div class="alert alert-info">
+            No Cab Bookings were found. Please
+            <a asp-action="Create" class="alert-link">Add a Driver</a> first.
+        </div>
+    }
+
+    @*<table class="table table-striped">
+        <tr>
+            <th>Title</th>
+            <th>Director</th>
+            <th>Release Date</th>
+            <th>Language</th>
+            <th>Summary</th>
+        </tr>
+        @foreach (var movie in Model)
+        {
+            <tr>
+                <td>@movie.Title</td>
+                <td>@movie.Director</td>
+                <td>@movie.ReleaseDate</td>
+                <td>@movie.Language</td>
+                <td>@movie.Summary</td>
+            </tr>
+        }
+    </table>*@
+</div>
+
+</table>

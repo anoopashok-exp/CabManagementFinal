@@ -1,0 +1,41 @@
+﻿@model IEnumerable<CabManagement.Models.ViewModel.BookingViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Cash on Payment</h1>
+
+<div class="d-flex">
+    <a asp-action="Create" class="btn btn-success ms-auto my-2"></a>
+</div>
+
+<div class="container-fluid">
+    @if(Model.Any()){
+        <div class="row gap-5">
+            @foreach (var item in Model)
+            {
+                <div class="card col-sm-3 shadow">
+                    < class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h2>@item.PickUp</h2>
+                        <h2>@item.Destination</h2>
+                        <h2>@item.Time</h2>
+                    </div>
+                    <div class="card-footer d-flex">
+                        <div class="btn-group ms-auto">
+                            <a asp-action="Decline" asp-route-id="@item.PickUp" class="btn btn-warning" onclick="return confirm('Payment can be done during ride')">Ok</a>
+
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+    else{
+        
+    }
+
+
+
+
